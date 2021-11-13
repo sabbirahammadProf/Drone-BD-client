@@ -8,11 +8,37 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-/* Common Css */
+/* Reusable CSS */
 .container{
     @apply w-11/12 m-auto;
 }
+.responsive{
+    @apply grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8;
+}
+.responsive-2col{
+    @apply grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-8;
+}
 
+/* Navigation */
 .nav-link {
     @apply text-white mx-3;
+}
+
+/* Button */
+.btn{
+    @apply px-3 py-2 rounded;
+}
+.btn-primary{
+    @apply bg-primary text-white transition-all focus:ring hover:bg-secondary;
+}
+
+/* Card */
+.card{
+    @apply shadow-2xl p-5 rounded;
+}
+.card-head{
+    @apply p-5 border-4 border-black rounded border-opacity-10;
+}
+.card-title{
+    @apply text-3xl font-bold py-3;
 }
