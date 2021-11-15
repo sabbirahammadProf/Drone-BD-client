@@ -17,7 +17,7 @@ const Header = () => {
                         <Link to="/explore" className="nav-link">Explore</Link>
                         {
                             user ? <><Link to="/dashboard" className="nav-link">Dashboard</Link>
-                                <button onClick={logOut} className="nav-link">Log Out</button></> : <><Link to="/login" className="nav-link">Login</Link>
+                                <button onClick={logOut} className="nav-link bg-secondary rounded py-1 px-2">Log Out</button></> : <><Link to="/login" className="nav-link">Login</Link>
                                 <Link to="/signup" className="nav-link">Signup</Link></>
                         }
                     </ul>

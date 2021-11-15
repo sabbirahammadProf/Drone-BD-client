@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import loginImage from '../../images/login.svg';
 import useAuth from '../../hooks/useAuth';
@@ -8,13 +9,16 @@ const Login = () => {
     const { signInAnUser } = useAuth();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { setError, error } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const uri = location?.state?.from ? location?.state?.from : '/';
 
     const onSubmit = (data) => {
         setError('');
         signInAnUser(data.email, data.password)
             .then(result => {
                 reset();
-                console.log(result.user)
+                history.push(uri);
             })
             .catch(err => setError(err.message))
     }

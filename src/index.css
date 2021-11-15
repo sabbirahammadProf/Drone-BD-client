@@ -21,7 +21,7 @@ body{
 
 /* Navigation */
 .nav-link {
-    @apply text-white mx-3;
+    @apply text-white mx-3 inline-block;
 }
 
 /* Button */

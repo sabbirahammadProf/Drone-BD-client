@@ -1,5 +1,6 @@
-import { updateProfile } from '@firebase/auth';
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
+import { updateProfile } from '@firebase/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -8,6 +9,9 @@ import registerImage from '../../images/register.svg';
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { setError, error, createAnNewUser, auth } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+    const uri = location?.state?.from ? location?.state?.from : '/';
 
     const onSubmit = (data) => {
         if (data.password.length < 6) {
@@ -20,7 +24,7 @@ const Signup = () => {
                         displayName: data.name
                     });
                     reset();
-
+                    history.push(uri);
                 })
                 .catch(err => setError(err.message))
         }
