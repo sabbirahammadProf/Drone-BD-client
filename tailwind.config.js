@@ -9,7 +9,8 @@ module.exports = {
       white: '#ffffff',
       black: '#000000',
       yellow: '#F7C000',
-      lightGray: 'rgba(174,174,174, 0.3)'
+      lightGray: 'rgba(174,174,174, 0.3)',
+      danger: 'red'
     }
   },
   variants: {

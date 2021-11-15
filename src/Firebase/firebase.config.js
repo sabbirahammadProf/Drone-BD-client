@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyCjL5tTKKBE8WgGH1Nat2nCpfDosBk3yjg",
-    authDomain: "drone-bd.firebaseapp.com",
-    projectId: "drone-bd",
-    storageBucket: "drone-bd.appspot.com",
-    messagingSenderId: "114586228612",
-    appId: "1:114586228612:web:ca52d0a53d08208271efd1"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STOR_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESS_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
 };
 
 export default firebaseConfig;
