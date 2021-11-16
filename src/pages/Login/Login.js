@@ -11,7 +11,7 @@ const Login = () => {
     const { setError, error, setUser, setIsLoading } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const uri = location?.state?.from ? location?.state?.from : '/dashboard';
+    const uri = location?.from ? location?.from?.pathname : '/dashboard';
 
     const onSubmit = (data) => {
         setIsLoading(true);

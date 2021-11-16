@@ -11,7 +11,7 @@ const Signup = () => {
     const { setError, error, createAnNewUser, auth, setUser, setIsLoading } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const uri = location?.state?.from ? location?.state?.from : '/dashboard';
+    const uri = location?.from ? location?.from?.pathname : '/dashboard';
 
     const onSubmit = (data) => {
         if (data.password.length < 6) {

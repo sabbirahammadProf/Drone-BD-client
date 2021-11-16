@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Dashboard from './pages/Dashboard/Dashboard';
+import SingleItem from './pages/SingleItem/SingleItem';
 import AuthProvider from './context/AuthProvider';
 import LoggedInPrivetRoute from './components/PrivetRoutes/LoggedInPrivetRoute';
 import LoggedOutPrivetRoute from './components/PrivetRoutes/LoggedOutPrivetRoute';
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <LoggedOutPrivetRoute path="/dashboard">
             <Dashboard></Dashboard>
+          </LoggedOutPrivetRoute>
+          <LoggedOutPrivetRoute path="/drone/:droneId">
+            <SingleItem></SingleItem>
           </LoggedOutPrivetRoute>
           <LoggedInPrivetRoute path="/login">
             <Login></Login>
