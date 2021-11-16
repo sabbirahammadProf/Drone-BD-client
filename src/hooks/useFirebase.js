@@ -19,36 +19,38 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
+        setIsLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
             } else {
                 setUser({});
             }
+            setIsLoading(false);
         });
-        setIsLoading(false);
-        return unsubscribe;
+        return () => unsubscribe;
     }, []);
 
 
     const logOut = () => {
         signOut(auth)
             .then(res => {
-                setUser(null);
+                setUser({});
             })
+            .finally(setIsLoading(false))
     }
 
     return {
         user,
-        createAnNewUser,
-        signInAnUser,
         setUser,
-        logOut,
+        signInAnUser,
+        auth,
+        createAnNewUser,
         error,
         setError,
         isLoading,
         setIsLoading,
-        auth
+        logOut
     }
 }
 

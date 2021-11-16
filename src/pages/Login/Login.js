@@ -8,19 +8,24 @@ import { useForm } from 'react-hook-form';
 const Login = () => {
     const { signInAnUser } = useAuth();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { setError, error } = useAuth();
+    const { setError, error, setUser, setIsLoading } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const uri = location?.state?.from ? location?.state?.from : '/';
+    const uri = location?.state?.from ? location?.state?.from : '/dashboard';
 
     const onSubmit = (data) => {
+        setIsLoading(true);
         setError('');
         signInAnUser(data.email, data.password)
             .then(result => {
-                reset();
+                setUser(result.user);
                 history.push(uri);
             })
             .catch(err => setError(err.message))
+            .finally(() => {
+                setIsLoading(false)
+                reset();
+            });
     }
     return (
         <div className="responsive-grid-2col container py-20 items-center">

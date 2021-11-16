@@ -8,10 +8,10 @@ import registerImage from '../../images/register.svg';
 
 const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { setError, error, createAnNewUser, auth } = useAuth();
+    const { setError, error, createAnNewUser, auth, setUser, setIsLoading } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const uri = location?.state?.from ? location?.state?.from : '/';
+    const uri = location?.state?.from ? location?.state?.from : '/dashboard';
 
     const onSubmit = (data) => {
         if (data.password.length < 6) {
@@ -23,10 +23,14 @@ const Signup = () => {
                     updateProfile(auth.currentUser, {
                         displayName: data.name
                     });
-                    reset();
+                    setUser(result.user);
                     history.push(uri);
                 })
                 .catch(err => setError(err.message))
+                .finally(() => {
+                    setIsLoading(false)
+                    reset();
+                });
         }
     }
 

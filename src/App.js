@@ -8,6 +8,8 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AuthProvider from './context/AuthProvider';
+import LoggedInPrivetRoute from './components/PrivetRoutes/LoggedInPrivetRoute';
+import LoggedOutPrivetRoute from './components/PrivetRoutes/LoggedOutPrivetRoute';
 
 function App() {
   return (
@@ -25,15 +27,15 @@ function App() {
           <Route exact path="/explore">
             <Explore></Explore>
           </Route>
-          <Route exact path="/dashboard">
+          <LoggedOutPrivetRoute path="/dashboard">
             <Dashboard></Dashboard>
-          </Route>
-          <Route exact path="/login">
+          </LoggedOutPrivetRoute>
+          <LoggedInPrivetRoute path="/login">
             <Login></Login>
-          </Route>
-          <Route exact path="/signup">
+          </LoggedInPrivetRoute>
+          <LoggedInPrivetRoute path="/signup">
             <Signup></Signup>
-          </Route>
+          </LoggedInPrivetRoute>
           <Route path="*">
             <Explore></Explore>
           </Route>
