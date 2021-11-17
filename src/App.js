@@ -11,6 +11,7 @@ import SingleItem from './pages/SingleItem/SingleItem';
 import AuthProvider from './context/AuthProvider';
 import LoggedInPrivetRoute from './components/PrivetRoutes/LoggedInPrivetRoute';
 import LoggedOutPrivetRoute from './components/PrivetRoutes/LoggedOutPrivetRoute';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
             <Signup></Signup>
           </LoggedInPrivetRoute>
           <Route path="*">
-            <Explore></Explore>
+            <NotFound></NotFound>
           </Route>
         </Switch>
         <Footer></Footer>

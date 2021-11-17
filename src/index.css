@@ -37,7 +37,7 @@ body{
 
 /* Card */
 .card{
-    @apply shadow-2xl p-5 rounded;
+    @apply shadow-xl p-5 rounded;
 }
 .card-head{
     @apply rounded w-full;

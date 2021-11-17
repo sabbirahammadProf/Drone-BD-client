@@ -23,6 +23,16 @@ const Signup = () => {
                     updateProfile(auth.currentUser, {
                         displayName: data.name
                     });
+
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(res => console.log(res));
+
                     setUser(result.user);
                     history.push(uri);
                 })
