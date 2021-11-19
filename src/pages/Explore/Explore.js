@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
-import drone from '../../images/drone.png';
 
 const Explore = () => {
     const [allDrones, setAllDrones] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/alldrones')
+        fetch('https://fathomless-plateau-47154.herokuapp.com/alldrones')
             .then(res => res.json())
             .then(data => setAllDrones(data))
     }, []);

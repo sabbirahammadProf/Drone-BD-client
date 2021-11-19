@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
 import useAuth from '../../hooks/useAuth';
 import AddNewAdmin from './AddNewAdmin/AddNewAdmin';
 import AddProduct from './AddProduct/AddProduct';
@@ -11,12 +10,40 @@ import Pay from './Pay/Pay';
 import Review from './Review/Review';
 
 const Dashboard = () => {
+    const [numberOfDrone, setNumberOfDrone] = useState(0);
+    const [numberOfOrder, setNumberOfOrder] = useState(0);
+    const [numberOfUsers, setNumberOfUsers] = useState(0);
+    const [numberOfRating, setNumberOfRating] = useState(0);
+    const [myOrder, setMyOrder] = useState(0);
     const { path, url } = useRouteMatch();
     const { logOut, user } = useAuth();
     const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user?email=${user?.email}`)
+        fetch('https://fathomless-plateau-47154.herokuapp.com/allDrones')
+            .then(res => res.json())
+            .then(data => setNumberOfDrone(data.length));
+
+        fetch('https://fathomless-plateau-47154.herokuapp.com/orders')
+            .then(res => res.json())
+            .then(data => setNumberOfOrder(data.length));
+
+        fetch('https://fathomless-plateau-47154.herokuapp.com/users')
+            .then(res => res.json())
+            .then(data => setNumberOfUsers(data.length));
+
+        fetch('https://fathomless-plateau-47154.herokuapp.com/reviews')
+            .then(res => res.json())
+            .then(data => setNumberOfRating(data.length));
+
+        fetch(`https://fathomless-plateau-47154.herokuapp.com/myorders?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setMyOrder(data.length));
+    }, []);
+
+
+    useEffect(() => {
+        fetch(`https://fathomless-plateau-47154.herokuapp.com/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.admin == true) {
@@ -28,9 +55,9 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="container grid grid-cols-3">
-            <div className="bg-secondary rounded text-center my-4">
-                <h3 className="text-2xl py-4 text-white bg-black rounded mb-2">Dashboard of Sabbir Ahammad</h3>
+        <div className="container responsive-grid py-8">
+            <div className="bg-secondary rounded text-center col-span-1">
+                <h3 className="text-xl py-4 px-2 text-white bg-black rounded mb-2">Dashboard of Sabbir Ahammad</h3>
                 <div className="pb-4">
                     {admin ? <><Link to={`${url}/manageorders`} className="dashboard-link">Manage all Orders</Link>
                         <Link to={`${url}/manageproducts`} className="dashboard-link">Manage products</Link>
@@ -41,8 +68,28 @@ const Dashboard = () => {
                         <button className="btn btn-secondary mt-6 mb-3" onClick={logOut}>Sign Out Now</button></>}
                 </div>
             </div>
-            <div>
+            <div className="col-span-2">
                 <Switch>
+                    <Route exact path={`${path}`}>
+                        <div className="grid w-full items-center h-full">
+                            {admin ? <div className="responsive-grid-2col">
+                                <div className="bg-primary text-white py-4 px-6 rounded text-xl">
+                                    Total products: {numberOfDrone}
+                                </div>
+                                <div className="bg-secondary text-white py-4 px-6 rounded text-xl">
+                                    Total orders: {numberOfOrder}
+                                </div>
+                                <div className="bg-success text-white py-4 px-6 rounded text-xl">
+                                    Total users: {numberOfUsers}
+                                </div>
+                                <div className="bg-yellow text-black py-4 px-6 rounded text-xl">
+                                    Number of Rating: {numberOfRating}
+                                </div>
+                            </div> : <div className="responsive-grid-2col w-full items-center h-full"><div className="bg-success text-white py-4 px-6 rounded text-xl">
+                                Your total order: {myOrder}
+                            </div></div>}
+                        </div>
+                    </Route>
                     <Route exact path={`${path}/manageorders`}>
                         <ManageAllOrders></ManageAllOrders>
                     </Route>

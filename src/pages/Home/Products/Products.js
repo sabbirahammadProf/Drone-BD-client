@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
 
 const Products = () => {
     const [drones, setDrones] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/drones?homeQtity=6')
+        fetch('https://fathomless-plateau-47154.herokuapp.com/drones?homeQtity=6')
             .then(res => res.json())
             .then(data => setDrones(data))
     }, []);

@@ -4,7 +4,7 @@ import ReactStars from 'react-stars';
 const Review = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://fathomless-plateau-47154.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -17,7 +17,7 @@ const Review = () => {
             <div className="responsive-grid mt-14">
                 {
                     reviews.map((review) => <div className="card text-center" key={review._id}>
-                        <img src={review.image} alt="" className="rounded-full w-3/12 mx-auto border my-6" />
+                        <img src={review.image} alt="" className="review-head" />
                         <h3 className="text-2xl font-bold">{review.name}</h3>
                         <ul className="pt-4 flex justify-center space-x-2">
                             <li><ReactStars

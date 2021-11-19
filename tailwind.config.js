@@ -11,7 +11,8 @@ module.exports = {
       yellow: '#F7C000',
       lightGray: 'rgba(174,174,174, 0.3)',
       gray: 'gray',
-      danger: 'red'
+      danger: 'red',
+      success: 'green'
     }
   },
   variants: {

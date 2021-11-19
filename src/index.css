@@ -34,6 +34,9 @@ body{
 .btn-secondary{
     @apply bg-secondary text-white transition-all duration-300 ring-1 focus:ring hover:bg-primary;
 }
+.btn-danger{
+    @apply bg-danger text-white transition-all duration-300 focus:ring ring-lightGray hover:bg-gray;
+}
 
 /* Card */
 .card{
@@ -45,6 +48,11 @@ body{
 .card-title{
     @apply text-3xl font-bold py-3;
 }
+.review-head{
+    height: 70px;
+    width: 70px;
+    @apply rounded-full mx-auto my-6;
+}
 
 /* Input */
 .formInput{
@@ -55,3 +63,4 @@ body{
 .dashboard-link{
     @apply transition-all block text-xl text-left text-white mx-4 hover:bg-primary rounded py-2 pl-2 duration-300;
 }
+

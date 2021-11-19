@@ -24,7 +24,7 @@ const Signup = () => {
                         displayName: data.name
                     });
                     data.role = 'user';
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://fathomless-plateau-47154.herokuapp.com/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
