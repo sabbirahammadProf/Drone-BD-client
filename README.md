@@ -1,4 +1,5 @@
-# Welcome to Drone Bd. We provide drone from the all over the world. You can order a drone from us an we will bring it for you
+# Welcome to Drone Bd.
+We provide drone from the all over the world. You can order a drone from us an we will bring it for you
 
 ### Our speciality
 1. We provide `drones with gurantee`
