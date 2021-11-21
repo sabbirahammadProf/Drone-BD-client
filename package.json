@@ -46,5 +46,17 @@
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
-  }
+  },
+  "description": "We provide drone from the all over the world. You can order a drone from us an we will bring it for you",
+  "main": "craco.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programming-hero-web-course-4/niche-website-client-side-sabbirahammadProf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programming-hero-web-course-4/niche-website-client-side-sabbirahammadProf/issues"
+  },
+  "homepage": "https://github.com/programming-hero-web-course-4/niche-website-client-side-sabbirahammadProf#readme"
 }
